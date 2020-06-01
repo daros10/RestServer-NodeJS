@@ -1,5 +1,4 @@
 const express = require('express');
-const app = express();
 
 // encriptar la contrasena con un hash de una solo via
 const bcrypt = require('bcrypt');
@@ -8,6 +7,8 @@ const bcrypt = require('bcrypt');
 const _ = require('underscore');
 
 const Usuario = require('../models/usuarios');
+
+const app = express();
 
 app.get('/usuario', function(req, res) {
 

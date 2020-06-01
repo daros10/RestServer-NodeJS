@@ -18,7 +18,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(require('./routes/usuario'));
+// En ves de llamar a cada ruta, se genera un archivo index 
+// que contiene todas las rutas, para de esta forma tener 
+// un codigo mas limpio
+// app.use(require('./routes/login'));
+// app.use(require('./routes/usuario'));
+app.use(require('./routes/index'));
 
 // conexion con mongo, si no existe la base no importar, se crea en la inseccion 
 mongoose.connect(process.env.URLDB, {
@@ -29,7 +34,7 @@ mongoose.connect(process.env.URLDB, {
     if (err) {
         throw err;
     } else {
-        console.log('Base de datos ONLINE');
+        console.log('*** Base de datos ONLINE');
     }
 });
 
