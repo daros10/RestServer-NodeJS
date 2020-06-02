@@ -17,6 +17,7 @@ process.env.CADUCIDAD_TOKEN = 60 * 60 * 24 * 30;
 // =================================
 // Seed - Semilla de autenticacion
 // =================================
+// SEED creada en heroku
 process.env.SEED = process.env.SEED || 'este-es-el-seed-desarollo';
 
 // =================================
