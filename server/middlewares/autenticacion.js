@@ -45,4 +45,28 @@ let verificaAdminRole = (req, res, next) => {
     }
 };
 
-module.exports = { verificaToken, verificaAdminRole };
+// ==============================
+// Verificar Token Img
+// ==============================
+let verificaToeknImg = (req, res, next) => {
+    let token = req.query.token;
+
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({
+                ok: false,
+                err: {
+                    message: 'El token no es valido',
+                    err,
+                },
+            });
+        }
+
+        req.usuario = decoded.usuario;
+        // permite que se ejecute el codigo luego de
+        // la llamada al middleware
+        next();
+    });
+};
+
+module.exports = { verificaToken, verificaAdminRole, verificaToeknImg };
